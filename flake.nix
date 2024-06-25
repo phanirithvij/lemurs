@@ -65,8 +65,8 @@
           options.services.lemurs = rec {
             enable = lib.mkEnableOption "Enable the Lemurs Display Manager";
 
-            x11.enable = lib.mkEnableOption "Enable the X11 part of the Lemurs Display Manager";
-            wayland.enable = lib.mkEnableOption "Enable the Wayland part of the Lemurs Display Manager";
+            # x11.enable = lib.mkEnableOption "Enable the X11 part of the Lemurs Display Manager";
+            # wayland.enable = lib.mkEnableOption "Enable the Wayland part of the Lemurs Display Manager";
 
             tty = lib.mkOption {
               type = lib.types.str;
@@ -74,6 +74,7 @@
             };
 
             x11 = {
+              enable = lib.mkEnableOption "Enable the X11 part of the Lemurs Display Manager";
               xauth = lib.mkOption {
                 type = lib.types.nullOr lib.types.package;
                 default = if x11.enable then pkgs.xorg.xauth else null;
@@ -91,6 +92,7 @@
             };
 
             wayland = {
+              enable = lib.mkEnableOption "Enable the Wayland part of the Lemurs Display Manager";
               wayland-sessions = lib.mkOption {
                 type = lib.types.path;
                 default = "${sessionData}/share/wayland-sessions";
@@ -138,7 +140,7 @@
                 serviceConfig = {
                   ExecStart = ''
                     ${pkgs.lemurs}/bin/lemurs                      \
-                      --xsessions  ${cfg.x11.xsessions}            \
+                      --xsessions ${cfg.x11.xsessions}            \
                       --wlsessions ${cfg.wayland.wayland-sessions}
                   '';
 
