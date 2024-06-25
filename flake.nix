@@ -56,7 +56,7 @@
       config,
       ...
     }: let
-      sessionData = config.services.displayManager.sessionData;
+      sessionData = config.services.xserver.displayManager.sessionData;
     in {
       options.services.lemurs = rec {
         enable = lib.mkEnableOption "Enable the Lemurs Display Manager";
