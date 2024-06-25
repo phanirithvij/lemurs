@@ -59,7 +59,7 @@
         , ...
         }:
         let
-          sessionData = config.services.xserver.displayManager.sessionData;
+          sessionData = config.services.displayManager.sessionData;
         in
         {
           options.services.lemurs = rec {
