@@ -87,7 +87,7 @@
 
               xsessions = lib.mkOption {
                 type = lib.types.path;
-                default = "${sessionData}/share/xsessions";
+                default = "${sessionData.desktops}/share/xsessions";
               };
             };
 
@@ -95,7 +95,7 @@
               enable = lib.mkEnableOption "Enable the Wayland part of the Lemurs Display Manager";
               wayland-sessions = lib.mkOption {
                 type = lib.types.path;
-                default = "${sessionData}/share/wayland-sessions";
+                default = "${sessionData.desktops}/share/wayland-sessions";
               };
             };
           };
